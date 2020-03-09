@@ -1,20 +1,22 @@
 const Account = require("../models/account");
 const passport = require('passport');
+const Contact = require('../models/contact');
+const Note = require('../models/note')
 
 module.exports = {
-    getUser: function(req, res, next) {
-        if(req.user) {
+	getUser: function(req, res, next) {
+        if(req.session.passport.user) {
             return res.status(200).json({
-                user: req.user,
+                user: req.session.passport.user,
                 authenticated: true
             });
         } else {
             return res.status(401).json({
                 error: 'User is not authenticated',
                 authenticated: false
-            });
+            }); 
         }
-    },
+	},
     register: function(req, res, next) {
         console.log('/register handler', req.body);
 		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
@@ -53,10 +55,15 @@ module.exports = {
 				res.status(200).send('OK');
 		});
     },
-    
     test: function(req , res, next){
         console.log(`Ping Dinger ${req.statusCode}`);
 		res.status(200).send("Dong!");
-    }
+	},
+	getContacts: function(req, res, next){
+		Account.find({username: req.params.username})
+		.populate("contacts")
+		.then(dbModel=>res.json(dbModel))
+		.catch(err=>res.status(422).json(err))
+	}
 
 };

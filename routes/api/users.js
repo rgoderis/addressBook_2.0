@@ -15,6 +15,9 @@ router.route("/login")
 router.route("/logout")
   .post(usersController.logout);
 
+router.route("/:username")
+  .get(usersController.getContacts)
+
 
 // Matches with "/api/users/:id"
 
