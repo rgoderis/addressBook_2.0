@@ -64,6 +64,13 @@ module.exports = {
 		.populate("contacts")
 		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))
+	},
+	addContact: function(req, res, next){
+		Contact.create(req.body)
+		.then(function(dbContact){
+			return Account.findOneAndUpdate({username: req.params.username}, {$push: {contacts: dbContact._id}})
+		})
+		.then(dbModel=>{res.json(dbModel)})
+		.catch(err=>res.status(422).json(err))
 	}
-
 };

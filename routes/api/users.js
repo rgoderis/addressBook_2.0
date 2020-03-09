@@ -17,6 +17,7 @@ router.route("/logout")
 
 router.route("/:username")
   .get(usersController.getContacts)
+  .post(usersController.addContact)
 
 
 // Matches with "/api/users/:id"

@@ -7,17 +7,12 @@ class Contacts extends React.Component{
     state = {
         contacts: []
     }
-    // getContacts = data =>{
-    //     console.log(`data ${data}`)
-    //     API.getContacts(data)
-    //     .then(res=>{console.log(res)})
-    //     .catch(err=>console.log(err))
-    // }
     componentDidMount(){
-        // this.getContacts(username)
         API.getContacts(username)
         .then(res=>{
+            console.log(res.data)
             this.setState({contacts: res.data[0].contacts})
+            console.log(this.state.contacts)
         })
         .catch(err=>console.log(err))
     }
