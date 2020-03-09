@@ -33,7 +33,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { from } = this.props.location.state || { from: { pathname: '/protected' } }
+		const { from } = this.props.location.state || { from: { pathname: '/contacts' } }
 		const { redirectToReferrer } = this.state
 		
 		if (redirectToReferrer) {
@@ -44,7 +44,7 @@ class Login extends React.Component {
 		
 		return (
 			<div>
-				<p>You must log in to view the page at {from.pathname}</p>
+				<p>Login</p>
 				<LoginForm onLogin={this.login} />
 			</div>
 		)

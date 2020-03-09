@@ -1,3 +1,5 @@
 module.exports = {
-  Account: require("./account")
+  Account: require("./account"),
+  Contact: require("./Contact"),
+  Note: require("./note")
 };
