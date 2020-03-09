@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LoginForm from "../LoginForm";
 import Auth from "../../utils/Auth";
+let username = ""
 //Uses the Auth methods to actually login with the LoginForm Component.
 class Login extends React.Component {
     //Initial boolean to check for authenticated user
@@ -23,6 +24,7 @@ class Login extends React.Component {
 		.then((response) => {
 			if (response.status === 200) { //All good
 				Auth.authenticate(() => { //Update the boolean and take off the cuffs
+					username = data.username
 					this.setState({ redirectToReferrer: true })
 				});
 			}
@@ -51,4 +53,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+export { Login, username};

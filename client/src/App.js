@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Auth from "./utils/Auth";
 import Home from "./pages/Home";
-import Login from "./components/Login";
+import {Login} from "./components/Login";
 import Register from "./components/Register"
 import NewContact from "./pages/NewContact";
 import Details from "./pages/Details";
