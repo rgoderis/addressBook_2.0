@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav'
 import {username} from "../components/Login"
 import API from "../utils/API"
+import ContactCard from "../components/ContactCard"
 
 class Contacts extends React.Component{
     state = {
@@ -10,7 +11,7 @@ class Contacts extends React.Component{
     componentDidMount(){
         API.getContacts(username)
         .then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({contacts: res.data[0].contacts})
             console.log(this.state.contacts)
         })
@@ -31,6 +32,17 @@ class Contacts extends React.Component{
             <div>
                 <Nav/>
                 <h1>Contacts Page</h1>
+                {this.state.contacts.map(contact=>(
+                    <ContactCard
+                        id = {contact._id}
+                        firstName = {contact.firstName}
+                        lastName = {contact.lastName}
+                        address = {contact.lastName}
+                        city = {contact.lastName}
+                        state = {contact.lastName}
+                        zip = {contact.lastName}
+                    />
+                ))}
             </div>
             
         )
