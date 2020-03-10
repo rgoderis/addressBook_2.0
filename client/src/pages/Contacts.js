@@ -37,10 +37,10 @@ class Contacts extends React.Component{
                         id = {contact._id}
                         firstName = {contact.firstName}
                         lastName = {contact.lastName}
-                        address = {contact.lastName}
-                        city = {contact.lastName}
-                        state = {contact.lastName}
-                        zip = {contact.lastName}
+                        address = {contact.address}
+                        city = {contact.city}
+                        state = {contact.state}
+                        zip = {contact.zip}
                     />
                 ))}
             </div>
