@@ -60,6 +60,7 @@ module.exports = {
 		res.status(200).send("Dong!");
 	},
 	getContacts: function(req, res, next){
+		console.log("test")
 		Account.find({username: req.params.username})
 		.populate("contacts")
 		.then(dbModel=>res.json(dbModel))
@@ -71,6 +72,15 @@ module.exports = {
 			return Account.findOneAndUpdate({username: req.params.username}, {$push: {contacts: dbContact._id}})
 		})
 		.then(dbModel=>{res.json(dbModel)})
+		.catch(err=>res.status(422).json(err))
+	},
+	getContact: function(req, res){
+		console.log("hello")
+		console.log(req.params.id)
+		Contact.find({_id: req.params.id})
+		.then(dbModel=>{
+			console.log(dbModel)
+			res.json(dbModel)})
 		.catch(err=>res.status(422).json(err))
 	}
 };

@@ -10,14 +10,17 @@ router.route("/register")
   .post(usersController.register);
 
 router.route("/login")
-.post(passport.authenticate('local', { failureRedirect: '/login' }), usersController.login);
+  .post(passport.authenticate('local', { failureRedirect: '/login' }), usersController.login);
 
 router.route("/logout")
   .post(usersController.logout);
 
 router.route("/:username")
   .get(usersController.getContacts)
-  .post(usersController.addContact)
+  .post(usersController.addContact);
+
+router.route("/contact/:id")
+  .get(usersController.getContact)
 
 
 // Matches with "/api/users/:id"

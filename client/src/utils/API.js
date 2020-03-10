@@ -9,7 +9,7 @@ const API = {
         return axios.post("/api/users/"+username, contactData)
     },
     getContact: function(id){
-        return axios.get("/api/users/"+id)
+        return axios.get("/api/users/contact/"+id)
     }
         
 }

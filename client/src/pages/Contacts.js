@@ -11,7 +11,6 @@ class Contacts extends React.Component{
     componentDidMount(){
         API.getContacts(username)
         .then(res=>{
-            // console.log(res.data)
             this.setState({contacts: res.data[0].contacts})
             console.log(this.state.contacts)
         })
