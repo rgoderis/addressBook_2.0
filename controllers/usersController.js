@@ -56,14 +56,14 @@ module.exports = {
         console.log(`Ping Dinger ${req.statusCode}`);
 		res.status(200).send("Dong!");
 	},
-	getContacts: function(req, res, next){
+	getContacts: function(req, res){
 		console.log("test")
 		Account.find({username: req.params.username})
 		.populate("contacts")
 		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))
 	},
-	addContact: function(req, res, next){
+	addContact: function(req, res){
 		Contact.create(req.body)
 		.then(function(dbContact){
 			return Account.findOneAndUpdate({username: req.params.username}, {$push: {contacts: dbContact._id}})
@@ -87,6 +87,8 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	addNote: function(req, res){
+		console.log("addNote")
+		console.log(req.body)
 		Note.create(req.body)
 		.then(dbNote=>{
 			return Contact.findOneAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}})
@@ -95,9 +97,10 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	deleteNote: function(req, res){
-		Note.findOneAndDelete({_id: req.params.id})
+		console.log("deleteNote")
+		Note.findOneAndDelete({_id: req.params.noteId})
 		.then(dbNote=>{
-			return Contact.findOneAndUpdate({_id: req.params.id}, {$pull: {notes: dbNote._id}})
+			return Contact.findOneAndUpdate({_id: req.params.contactId}, {$pull: {notes: dbNote._id}})
 		})
 		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))

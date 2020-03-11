@@ -10,7 +10,13 @@ const API = {
     },
     getContact: function(id){
         return axios.get("/api/users/contact/"+id)
-    }
+    },
+    saveNote: function(id, noteData) {
+        return axios.post("/api/users/"+id+"/note", noteData)
+    },
+    deleteNote: function(contactId, noteId){
+        return axios.delete("/api/users/"+contactId+"/note/"+noteId)
+    },
         
 }
 
