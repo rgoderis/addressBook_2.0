@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import {username} from "../components/Login"
 import API from "../utils/API"
 import ContactCard from "../components/ContactCard"
+import SearchBar from "../components/SearchBar"
 
 class Contacts extends React.Component{
     state = {
@@ -30,6 +31,11 @@ class Contacts extends React.Component{
         return(
             <div>
                 <Nav/>
+                <SearchBar
+                    option={this.handleOptionChange}
+                    input={this.handleInputChange}
+                    onClick={this.handleSearchSubmit}
+                />
                 <h1>Contacts Page</h1>
                 {this.state.contacts.map(contact=>(
                     <ContactCard

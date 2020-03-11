@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import API from "../utils/API"
+import API from "../utils/API";
 
 class Details extends React.Component{
     state = {
@@ -35,11 +35,9 @@ class Details extends React.Component{
     }
 
     componentDidMount(){
-        // console.log(this.props.match.params.id)
         API.getContact(this.props.match.params.id)
         .then(res=>{
             this.setState({contact: res.data})
-            console.log(this.state.contact.notes)
             if(this.state.contact.notes.length !==0){
                 this.setState({notes: true})
             }
@@ -78,7 +76,6 @@ class Details extends React.Component{
                     </form>
                 </div>
             </div>
-            
         )
     }
 }
