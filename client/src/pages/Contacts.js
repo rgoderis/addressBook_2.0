@@ -7,7 +7,9 @@ import SearchBar from "../components/SearchBar"
 
 class Contacts extends React.Component{
     state = {
-        contacts: []
+        contacts: [],
+        option: "",
+        input: ""
     }
     componentDidMount(){
         API.getContacts(username)
@@ -16,6 +18,14 @@ class Contacts extends React.Component{
             console.log(this.state.contacts)
         })
         .catch(err=>console.log(err))
+    }
+
+    handleOptionChange = event =>{
+        event.target.value === "false"?this.setState({option: ""}):this.setState({option: event.target.value})
+    }
+
+    handleInputChange = event =>{
+        this.setState({input: event.target.value})
     }
 
     render(){
@@ -49,7 +59,6 @@ class Contacts extends React.Component{
                     />
                 ))}
             </div>
-            
         )
     }
 }
