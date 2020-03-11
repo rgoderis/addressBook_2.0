@@ -20,39 +20,36 @@ module.exports = {
     register: function(req, res, next) {
         console.log('/register handler', req.body);
 		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
-				if (err) {
-					return res.status(500).send({ error : err.message });
-				}
-
-				passport.authenticate('local')(req, res, () => {
-						req.session.save((err) => {
-								if (err) {
-									//ToDo:log the error and look for an existing user
-									
-										return next(err);
-								}
-
-								res.send(200,"successful register");
-						});
+			if (err) {
+				return res.status(500).send({ error : err.message });
+			}
+			passport.authenticate('local')(req, res, () => {
+				req.session.save((err) => {
+					if (err) {
+					//ToDo:log the error and look for an existing user
+						return next(err);
+					}
+					res.send(200,"successful register");
 				});
+			});
 		});
     },
     login: function(req, res, next) {
         console.log('/login handler');
 		req.session.save((err) => {
-				if (err) {
-						return next(err);
-				}
-				res.status(200).send('OK');
+			if (err) {
+				return next(err);
+			}
+			res.status(200).send('OK');
 		});
     },
     logout: function(req, res, next) {
         req.logout();
 		req.session.save((err) => {
-				if (err) {
-						return next(err);
-				}
-				res.status(200).send('OK');
+			if (err) {
+				return next(err);
+			}
+			res.status(200).send('OK');
 		});
     },
     test: function(req , res, next){
@@ -75,12 +72,18 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	getContact: function(req, res){
-		console.log("hello")
-		console.log(req.params.id)
-		Contact.find({_id: req.params.id})
+		Contact.findById(req.params.id)
+		.populate("notes")
 		.then(dbModel=>{
-			console.log(dbModel)
 			res.json(dbModel)})
+		.catch(err=>res.status(422).json(err))
+	},
+	addNote: function(req, res){
+		Note.create(req.body)
+		.then(dbNote=>{
+			return Contact.findOneAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}})
+		})
+		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))
 	}
 };
