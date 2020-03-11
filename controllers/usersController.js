@@ -104,5 +104,47 @@ module.exports = {
 		})
 		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))
+	},
+	searchContacts: function(req, res){
+		console.log(req.params.option)
+		console.log(req.params.input)
+		let option = req.params.option;
+		let input = req.params.input
+		switch(option){
+		  case "lastName":
+			Contact
+			.find({lastName: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+			.sort({lastName: 1})
+			.then(dbModel => res.json(dbModel))
+			.catch(err=>res.status(422).json(err))
+			break;
+		  case "firstName":
+			Contact
+			.find({firstName: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+			.sort({firstName: 1})
+			.then(dbModel => res.json(dbModel))
+			.catch(err=>res.status(422).json(err))
+			break;
+		  case "city":
+			Contact
+			.find({city: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+			.sort({city: 1})
+			.then(dbModel => res.json(dbModel))
+			.catch(err=>res.status(422).json(err))
+			break;
+		  case "state":
+			Contact
+			.find({state: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+			.sort({state: 1})
+			.then(dbModel => res.json(dbModel))
+			.catch(err=>res.status(422).json(err))
+			break;
+		  case "zip":
+			Contact
+			.find({zip: { $regex: new RegExp("^" + input.toLowerCase(), "i") }})
+			.sort({zip: 1})
+			.then(dbModel => res.json(dbModel))
+			.catch(err=>res.status(422).json(err))
+		}
 	}
 };

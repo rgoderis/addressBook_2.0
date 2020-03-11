@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar(){
+function SearchBar(props){
     return(
         <div className="form-group text-center">
         <select className="form-control d-inline w-25" onChange={props.option}>

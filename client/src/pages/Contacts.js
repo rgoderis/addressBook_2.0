@@ -35,7 +35,7 @@ class Contacts extends React.Component{
         } else {
             API.searchContacts(this.state.option, this.state.input)
             .then(res=>{
-                console.log(res.data)
+                this.setState({contacts: res.data})
             })
             .catch(err=>console.log(err))
         }

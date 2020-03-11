@@ -17,7 +17,9 @@ const API = {
     deleteNote: function(contactId, noteId){
         return axios.delete("/api/users/"+contactId+"/note/"+noteId)
     },
-        
+    searchContacts: function(option, input){
+        return axios.get("/api/users/contacts/"+option+"/"+input)
+    }
 }
 
 export default API

@@ -25,8 +25,11 @@ router.route("/contact/:id")
 router.route("/:id/note")
   .post(usersController.addNote)
 
-  router.route("/:contactId/note/:noteId")
+router.route("/:contactId/note/:noteId")
   .delete(usersController.deleteNote)
+
+router.route("/contacts/:option/:input")
+  .get(usersController.searchContacts)
 
 // Matches with "/api/users/:id"
 
