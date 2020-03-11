@@ -28,6 +28,19 @@ class Contacts extends React.Component{
         this.setState({input: event.target.value})
     }
 
+    handleSearchSubmit = event =>{
+        event.preventDefault();
+        if(!this.state.option||!this.state.input){
+            console.log("please enter a valid option");
+        } else {
+            API.searchContacts(this.state.option, this.state.input)
+            .then(res=>{
+                console.log(res.data)
+            })
+            .catch(err=>console.log(err))
+        }
+    }
+
     render(){
         if(!this.state.contacts.length){
             return(
