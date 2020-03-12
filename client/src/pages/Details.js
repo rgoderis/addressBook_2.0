@@ -6,7 +6,8 @@ class Details extends React.Component{
     state = {
         contact: {},
         notes: false,
-        note:""
+        note:"",
+        updated: false,
     }
 
     handleInputChange = event=>{
@@ -23,15 +24,26 @@ class Details extends React.Component{
             API.saveNote(this.state.contact._id,{
                 body: this.state.note
             })
-            .catch(err=>console.log(err))
-            window.location.reload()             
+            .then(res=>this.setState({note: "", updated: true}))
+            .catch(err=>console.log(err))        
         }
     }
 
     deleteNote = noteId=>{
         API.deleteNote(this.state.contact._id, noteId)
+        .then(res=>this.setState({updated: true}))
         .catch(err=>console.log(err))
-        window.location.reload()
+    }
+
+    getContactInfo = id =>{
+        API.getContact(id)
+        .then(res=>{
+            this.setState({contact: res.data})
+            if(this.state.contact.notes.length !==0){
+                this.setState({notes: true})
+            }
+        })
+        .catch(err=>console.log(err))
     }
 
     componentDidMount(){
@@ -43,7 +55,20 @@ class Details extends React.Component{
             }
         })
         .catch(err=>console.log(err))    
+    }
 
+    componentDidUpdate(){
+        console.log("something happened")
+        if(this.state.updated){
+            API.getContact(this.props.match.params.id)
+            .then(res=>{
+                this.setState({contact: res.data, updated: false})
+                if(this.state.contact.notes.length !==0){
+                    this.setState({notes: true})
+                }
+            })
+            .catch(err=>console.log(err))    
+        }
     }
     render(){
         return(
