@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../components/Nav';
 import API from "../utils/API";
+import {userId} from "./Contacts"
 
 class Details extends React.Component{
     state = {
@@ -37,7 +38,7 @@ class Details extends React.Component{
 
     deleteContact = event=>{
         // delete contact
-        API.deleteContact(this.state.contact_id)
+        API.deleteContact(userId, this.state.contact_id)
         .then(res=>{console.log(res)})
         .catch(err=>console.log(err))
     }
@@ -54,6 +55,7 @@ class Details extends React.Component{
     }
 
     componentDidMount(){
+        console.log(userId)
         API.getContact(this.props.match.params.id)
         .then(res=>{
             this.setState({contact: res.data})

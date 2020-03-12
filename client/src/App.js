@@ -11,7 +11,7 @@ import {Login} from "./components/Login";
 import Register from "./components/Register"
 import NewContact from "./pages/NewContact";
 import Details from "./pages/Details";
-import Contacts from "./pages/Contacts"
+import {Contacts} from "./pages/Contacts"
 require("dotenv").config()
 
 

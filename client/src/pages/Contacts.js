@@ -78,4 +78,4 @@ class Contacts extends React.Component{
     }
 }
 
-export default Contacts
+export {Contacts, userId}
