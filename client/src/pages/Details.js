@@ -35,6 +35,13 @@ class Details extends React.Component{
         .catch(err=>console.log(err))
     }
 
+    deleteContact = event=>{
+        // delete contact
+        API.deleteContact(this.state.contact_id)
+        .then(res=>{console.log(res)})
+        .catch(err=>console.log(err))
+    }
+
     getContactInfo = id =>{
         API.getContact(id)
         .then(res=>{
@@ -84,6 +91,7 @@ class Details extends React.Component{
                     <h4>Address: {this.state.contact.address} {this.state.contact.city} {this.state.contact.state}. {this.state.contact.zip}</h4>
                     <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
                 </div>
+                <button>Delete Contact</button>
                 <br/>
                 <div>
                 <h3>Notes</h3>

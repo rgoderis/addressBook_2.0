@@ -79,9 +79,9 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	deleteContact: function(req, res){
-		Contact.findOneAndDelete({_id: req.params.id})
+		Contact.findOneAndDelete({_id: req.params.contactId})
 		.then(dbContact=>{
-			return Account.findOneAndUpdate({_id: req.params.id}, {$pull: {contacts: dbContact._id}})
+			return Account.findOneAndUpdate({_id: req.params.userId}, {$pull: {contacts: dbContact._id}})
 		})
 		.then(dbModel=>res.json(dbModel))
 		.catch(err=>res.status(422).json(err))

@@ -31,6 +31,9 @@ router.route("/:contactId/note/:noteId")
 router.route("/contacts/:option/:input")
   .get(usersController.searchContacts)
 
+router.route("/contact/:userId/:contactId")
+  .delete(usersController.deleteContact)
+
 // Matches with "/api/users/:id"
 
 /* Testing Endpoint */

@@ -3,7 +3,8 @@ import Nav from '../components/Nav'
 import {username} from "../components/Login"
 import API from "../utils/API"
 import ContactCard from "../components/ContactCard"
-import SearchBar from "../components/SearchBar"
+import SearchBar from "../components/SearchBar";
+let userId = ""
 
 class Contacts extends React.Component{
     state = {
@@ -14,8 +15,8 @@ class Contacts extends React.Component{
     componentDidMount(){
         API.getContacts(username)
         .then(res=>{
+            userId = res.data[0]._id;
             this.setState({contacts: res.data[0].contacts})
-            console.log(this.state.contacts)
         })
         .catch(err=>console.log(err))
     }

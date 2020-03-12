@@ -19,6 +19,9 @@ const API = {
     },
     searchContacts: function(option, input){
         return axios.get("/api/users/contacts/"+option+"/"+input)
+    },
+    deleteContact: function(userId, contactId){
+        return axios.get(`api/users/contact/${userId}/${contactId}`)
     }
 }
 
