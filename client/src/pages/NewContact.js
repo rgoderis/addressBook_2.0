@@ -4,6 +4,7 @@ import Input from "../components/Input";
 import DropDown from "../components/Dropdown"
 import API from "../utils/API"
 import {username} from "../components/Login"
+import { Redirect } from 'react-router-dom';
 
 class NewContact extends React.Component{
     state = {
@@ -19,7 +20,8 @@ class NewContact extends React.Component{
         address: "",
         city: "",
         state: "",
-        zip: ""
+        zip: "",
+        redirectToReferrer: false
     }
 
     handleInputChange = event=>{
@@ -49,6 +51,7 @@ class NewContact extends React.Component{
                     console.log("success")
                     // let path = "/"
                     // this.props.history.push(path)
+                    this.setState({redirectToReferrer: true})
                 }
                 else {
                     console.log(res.status)
@@ -70,6 +73,13 @@ class NewContact extends React.Component{
     }
     
     render(){
+        const { redirectToReferrer } = this.state
+		
+		if (redirectToReferrer) {
+			return (
+				<Redirect to={"/contacts"}/>
+			)
+		}
         return (
             <div>
                 <Nav/>
