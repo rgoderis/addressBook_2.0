@@ -58,13 +58,14 @@ class Details extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log("something happened")
         if(this.state.updated){
             API.getContact(this.props.match.params.id)
             .then(res=>{
                 this.setState({contact: res.data, updated: false})
                 if(this.state.contact.notes.length !==0){
                     this.setState({notes: true})
+                } else {
+                    this.setState({notes: false})
                 }
             })
             .catch(err=>console.log(err))    
