@@ -46,6 +46,7 @@ class Contacts extends React.Component{
             return(
                 <div>
                     <Nav/>
+                    <SearchBar/>
                     <h1>Contacts Page</h1>
                     <h2>No Contacts Found</h2>
                 </div>

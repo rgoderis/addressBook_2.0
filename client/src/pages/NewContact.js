@@ -48,9 +48,6 @@ class NewContact extends React.Component{
             })
             .then(res=>{
                 if(res.status=== 200){
-                    console.log("success")
-                    // let path = "/"
-                    // this.props.history.push(path)
                     this.setState({redirectToReferrer: true})
                 }
                 else {
