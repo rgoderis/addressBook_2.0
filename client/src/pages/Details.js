@@ -1,7 +1,8 @@
 import React from 'react';
 import Nav from '../components/Nav';
 import API from "../utils/API";
-import {userId} from "./Contacts"
+import {userId} from "./Contacts";
+import {Redirect} from "react-router-dom"
 
 class Details extends React.Component{
     state = {
@@ -9,6 +10,8 @@ class Details extends React.Component{
         notes: false,
         note:"",
         updated: false,
+        pathName: "",
+        redirect: false
     }
 
     handleInputChange = event=>{
@@ -38,7 +41,9 @@ class Details extends React.Component{
 
     deleteContact = event=>{
         API.deleteContact(userId, this.state.contact._id)
-        .then(res=>{console.log(res)})
+        .then(res=>{
+            this.setState({pathName: "/contacts", redirect: true})
+        })
         .catch(err=>console.log(err))
     }
 
@@ -80,6 +85,11 @@ class Details extends React.Component{
         }
     }
     render(){
+        if(this.state.redirect){
+            return(
+                <Redirect to={this.state.pathName}/>
+            )
+        }
         return(
             <div>
                 <Nav/>
