@@ -37,8 +37,7 @@ class Details extends React.Component{
     }
 
     deleteContact = event=>{
-        // delete contact
-        API.deleteContact(userId, this.state.contact_id)
+        API.deleteContact(userId, this.state.contact._id)
         .then(res=>{console.log(res)})
         .catch(err=>console.log(err))
     }
@@ -93,7 +92,7 @@ class Details extends React.Component{
                     <h4>Address: {this.state.contact.address} {this.state.contact.city} {this.state.contact.state}. {this.state.contact.zip}</h4>
                     <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
                 </div>
-                <button>Delete Contact</button>
+                <button onClick={this.deleteContact}>Delete Contact</button>
                 <br/>
                 <div>
                 <h3>Notes</h3>

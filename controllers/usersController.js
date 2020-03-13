@@ -79,6 +79,9 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	deleteContact: function(req, res){
+		console.log("delete contact")
+		console.log(req.params.id)
+		console.log(req.body)
 		Contact.findOneAndDelete({_id: req.params.contactId})
 		.then(dbContact=>{
 			return Account.findOneAndUpdate({_id: req.params.userId}, {$pull: {contacts: dbContact._id}})

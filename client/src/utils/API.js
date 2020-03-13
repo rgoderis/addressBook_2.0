@@ -21,7 +21,7 @@ const API = {
         return axios.get("/api/users/contacts/"+option+"/"+input)
     },
     deleteContact: function(userId, contactId){
-        return axios.get(`api/users/contact/${userId}/${contactId}`)
+        return axios.delete(`/api/users/contact/${userId}/${contactId}`)
     }
 }
 
