@@ -78,6 +78,12 @@ module.exports = {
 			res.json(dbModel)})
 		.catch(err=>res.status(422).json(err))
 	},
+	editContact: function(req, res){
+		Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
+		.then(dbModel=>{
+			res.json(dbModel)})
+		.catch(err=>res.status(422).json(err))
+	},
 	deleteContact: function(req, res){
 		console.log("delete contact")
 		console.log(req.params.id)
