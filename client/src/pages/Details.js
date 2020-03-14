@@ -39,6 +39,10 @@ class Details extends React.Component{
         .catch(err=>console.log(err))
     }
 
+    updateContact = ()=>{
+        this.setState({redirect: true, pathName: `/update/${this.state.contact._id}`})
+    }
+
     deleteContact = event=>{
         API.deleteContact(userId, this.state.contact._id)
         .then(res=>{
@@ -103,6 +107,7 @@ class Details extends React.Component{
                     <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
                 </div>
                 <button onClick={this.deleteContact}>Delete Contact</button>
+                <button onClick={this.updateContact}>Edit Contact</button>
                 <br/>
                 <div>
                 <h3>Notes</h3>

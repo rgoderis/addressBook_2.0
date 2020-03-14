@@ -18,7 +18,6 @@ module.exports = {
         }
 	},
     register: function(req, res, next) {
-        console.log('/register handler', req.body);
 		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
 			if (err) {
 				return res.status(500).send({ error : err.message });
@@ -35,7 +34,6 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
-        console.log('/login handler');
 		req.session.save((err) => {
 			if (err) {
 				return next(err);
@@ -57,7 +55,6 @@ module.exports = {
 		res.status(200).send("Dong!");
 	},
 	getContacts: function(req, res){
-		console.log("test")
 		Account.find({username: req.params.username})
 		.populate("contacts")
 		.then(dbModel=>res.json(dbModel))
@@ -72,9 +69,12 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	getContact: function(req, res){
+		console.log("getContact")
+		console.log(req.params.id)
 		Contact.findById(req.params.id)
 		.populate("notes")
 		.then(dbModel=>{
+			// console.log(dbModel)
 			res.json(dbModel)})
 		.catch(err=>res.status(422).json(err))
 	},
@@ -85,9 +85,6 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	deleteContact: function(req, res){
-		console.log("delete contact")
-		console.log(req.params.id)
-		console.log(req.body)
 		Contact.findOneAndDelete({_id: req.params.contactId})
 		.then(dbContact=>{
 			return Account.findOneAndUpdate({_id: req.params.userId}, {$pull: {contacts: dbContact._id}})
@@ -96,8 +93,6 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	addNote: function(req, res){
-		console.log("addNote")
-		console.log(req.body)
 		Note.create(req.body)
 		.then(dbNote=>{
 			return Contact.findOneAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}})
@@ -106,7 +101,6 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	deleteNote: function(req, res){
-		console.log("deleteNote")
 		Note.findOneAndDelete({_id: req.params.noteId})
 		.then(dbNote=>{
 			return Contact.findOneAndUpdate({_id: req.params.contactId}, {$pull: {notes: dbNote._id}})
@@ -115,8 +109,6 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	searchContacts: function(req, res){
-		console.log(req.params.option)
-		console.log(req.params.input)
 		let option = req.params.option;
 		let input = req.params.input
 		switch(option){

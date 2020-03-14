@@ -22,6 +22,9 @@ const API = {
     },
     deleteContact: function(userId, contactId){
         return axios.delete(`/api/users/contact/${userId}/${contactId}`)
+    },
+    updateContact: function(id, contactData){
+        return axios.put("/api/users/"+id, contactData)
     }
 }
 

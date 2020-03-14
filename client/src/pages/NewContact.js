@@ -21,7 +21,8 @@ class NewContact extends React.Component{
         city: "",
         state: "",
         zip: "",
-        redirectToReferrer: false
+        redirectToReferrer: false,
+        updateRoute: false
     }
 
     handleInputChange = event=>{
@@ -61,13 +62,68 @@ class NewContact extends React.Component{
         }
     }
 
+    handleUpdateSubmit = event =>{
+        event.preventDefault()
+        if(this.state.firstName&&this.state.lastName){
+            API.updateContact(this.props.match.params.id, {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                phoneNumber: this.state.phoneNumber,
+                email: this.state.email,
+                address: this.state.address,
+                city: this.state.city,
+                state: this.state.state,
+                zip: this.state.zip,
+                birthDay: this.state.birthDay,
+                birthMonth: this.state.birthMonth
+            })
+            .then(res=>{
+                if(res.status=== 200){
+                    this.setState({redirectToReferrer: true})
+                }
+                else {
+                    console.log(res.status)
+                }
+            })
+            .catch(err=>console.log(err))
+        } else {
+            console.log("Please enter a first and last name")
+            return false
+        }
+    }
+
+    updateContact(){
+            API.getContact(this.props.match.params.id)
+            .then(res=>{
+                console.log(res.data)
+                this.setState({
+                    firstName: res.data.firstName, 
+                    lastName: res.data.lastName,
+                    phoneNumber: res.data.phoneNumber,
+                    email: res.data.email,
+                    address: res.data.address,
+                    city: res.data.city,
+                    state: res.data.state,
+                    zip: res.data.zip,
+                    birthDay: res.data.birthDay,
+                    birthMonth: res.data.birthMonth
+                })
+            })
+            .catch(err=>console.log(err))
+    }
+
     componentDidMount(){
+        this.props.match.params.id?this.setState({updateRoute: true}):this.setState({updateRoute: false})
+        this.updateContact()
         let days=[""]
         for(let i=1; i <=31; i++){
             days.push(i)
         }
         this.setState({days: days})
     }
+    // componentDidUpdate(){
+    //     this.props.match.params.id?this.setState({updateRoute: true}):this.setState({updateRoute: false})
+    // }
     
     render(){
         const { redirectToReferrer } = this.state
@@ -80,7 +136,7 @@ class NewContact extends React.Component{
         return (
             <div>
                 <Nav/>
-                <h1 className="text-center">New Contact</h1>
+                <h1 className="text-center">{this.state.updateRoute?("Update Contact"):("New Contact")}</h1>
                 <form>
                     <div className="form-group">
                         <div className="row">
@@ -188,7 +244,9 @@ class NewContact extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>
+                    {this.state.updateRoute?
+                    (<button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>):
+                    (<button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>)}
                 </form>
             </div>
         )

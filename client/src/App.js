@@ -24,6 +24,7 @@ class App extends React.Component{
           <Route path = "/login" component={Login}/>
           <Route path = "/register" component={Register}/>
           <PrivateRoute path = "/new" component={NewContact}/>
+          <PrivateRoute path = "/update/:id" component={NewContact}/>
           <PrivateRoute path = "/details/:id" component={Details}/>
           <PrivateRoute path = "/contacts" component={Contacts}/>
           <Route component={Home}/>
