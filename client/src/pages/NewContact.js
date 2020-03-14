@@ -245,7 +245,7 @@ class NewContact extends React.Component{
                         </div>
                     </div>
                     {this.state.updateRoute?
-                    (<button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>):
+                    (<button className="btn btn-primary btn-lg" onClick={this.handleUpdateSubmit}>Update Contact</button>):
                     (<button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>)}
                 </form>
             </div>
