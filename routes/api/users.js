@@ -34,6 +34,9 @@ router.route("/contacts/:option/:input")
 router.route("/contact/:userId/:contactId")
   .delete(usersController.deleteContact)
 
+router.route("/:id")
+  .put(usersController.editContact)
+
 // Matches with "/api/users/:id"
 
 /* Testing Endpoint */

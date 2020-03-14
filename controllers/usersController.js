@@ -79,6 +79,7 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	editContact: function(req, res){
+		console.log("edit route")
 		Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
 		.then(dbModel=>{
 			res.json(dbModel)})
