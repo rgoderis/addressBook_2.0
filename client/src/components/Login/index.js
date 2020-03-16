@@ -48,7 +48,6 @@ class Login extends React.Component {
 		return (
 			<div>
 				<Landing/>
-				<p>Login</p>
 				<LoginForm onLogin={this.login} />
 			</div>
 		)
