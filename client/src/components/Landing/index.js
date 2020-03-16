@@ -1,9 +1,10 @@
 import React from "react";
+import "./style.css"
 
 function Landing(){
     return(
-        <div>
-            <h1 className="text-center">Address Book</h1>
+        <div className="container jumbotron landing">
+            <h1 className="text-center text-white">Address Book</h1>
         </div>
     )
 }

@@ -5,10 +5,10 @@ import Landing from "../components/Landing"
 class Home extends React.Component{
     render(){
         return(
-            <div>
+            <div className="text-center">
                 <Landing/>
-                <button><Link to="/login">Login</Link></button>
-                <button><Link to="/register">Register</Link></button>
+                <Link to="/login" className="btn btn-info btn-lg mx-5 px-5 text-dark text-decoration-none">Login</Link>
+                <Link to="/register" className="btn btn-info btn-lg mx-5 px-5 text-dark text-decoration-none">Register</Link>
             </div>
         )
     }
