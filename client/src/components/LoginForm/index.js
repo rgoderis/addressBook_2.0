@@ -9,7 +9,6 @@ class LoginForm extends React.Component {
 	render() {
 		const { onLogin } = this.props;
 		return (
-			
 				<form
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
@@ -44,7 +43,6 @@ class LoginForm extends React.Component {
 						</div>
 					</div>
 				</form>
-			
 		)
 	}
 }
