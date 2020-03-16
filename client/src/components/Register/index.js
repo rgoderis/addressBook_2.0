@@ -1,5 +1,6 @@
 import React from 'react';
 import RegisterForm from "../RegisterForm";
+import Landing from "../Landing"
 //The component for doing the actual signup of the User
 class Register extends React.Component {
 	state = {
@@ -30,6 +31,7 @@ class Register extends React.Component {
 	render() {
 		return (
 			<div>
+				<Landing/>
 				<h4>Register a New User</h4>
 				<RegisterForm onRegister={this.register} />
 			</div>

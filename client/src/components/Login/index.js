@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LoginForm from "../LoginForm";
 import Auth from "../../utils/Auth";
+import Landing from "../Landing"
 let username = ""
 //Uses the Auth methods to actually login with the LoginForm Component.
 class Login extends React.Component {
@@ -46,6 +47,7 @@ class Login extends React.Component {
 		
 		return (
 			<div>
+				<Landing/>
 				<p>Login</p>
 				<LoginForm onLogin={this.login} />
 			</div>
