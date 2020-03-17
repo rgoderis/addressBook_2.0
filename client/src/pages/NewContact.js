@@ -134,7 +134,6 @@ class NewContact extends React.Component{
 		}
         return (
             <div>
-                <Nav/>
                 <h1 className="text-center">{this.state.updateRoute?("Update Contact"):("New Contact")}</h1>
                 <form>
                     <div className="form-group">

@@ -96,7 +96,6 @@ class Details extends React.Component{
         }
         return(
             <div>
-                <Nav/>
                 <h1>Contact Information</h1>
                 <br/>
                 <h2>{this.state.contact.firstName} {this.state.contact.lastName}</h2>

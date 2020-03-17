@@ -46,7 +46,6 @@ class Contacts extends React.Component{
         if(!this.state.contacts.length){
             return(
                 <div>
-                    <Nav/>
                     <SearchBar/>
                     <h1>Contacts Page</h1>
                     <h2>No Contacts Found</h2>
@@ -55,7 +54,6 @@ class Contacts extends React.Component{
         }
         return(
             <div>
-                <Nav/>
                 <SearchBar
                     option={this.handleOptionChange}
                     input={this.handleInputChange}
