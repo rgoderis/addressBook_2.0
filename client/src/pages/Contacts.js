@@ -59,18 +59,20 @@ class Contacts extends React.Component{
                     input={this.handleInputChange}
                     onClick={this.handleSearchSubmit}
                 />
-                <h1>Contacts Page</h1>
-                {this.state.contacts.map(contact=>(
-                    <ContactCard
-                        id = {contact._id}
-                        firstName = {contact.firstName}
-                        lastName = {contact.lastName}
-                        address = {contact.address}
-                        city = {contact.city}
-                        state = {contact.state}
-                        zip = {contact.zip}
-                    />
-                ))}
+                <h1 className="text-center">Contacts Page</h1>
+                <div className="container">
+                    {this.state.contacts.map(contact=>(
+                        <ContactCard
+                            id = {contact._id}
+                            firstName = {contact.firstName}
+                            lastName = {contact.lastName}
+                            address = {contact.address}
+                            city = {contact.city}
+                            state = {contact.state}
+                            zip = {contact.zip}
+                        />
+                    ))}
+                </div>
             </div>
         )
     }
