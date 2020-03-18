@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../pages/style.css"
 
 class LoginForm extends React.Component {
 	// refs
@@ -37,7 +38,7 @@ class LoginForm extends React.Component {
 							</div>
 						</div>
 						<div className="d-flex flex-row-reverse pt-2">
-							<button className="btn btn-info btn-lg px-5 text-dark" type='submit'>
+							<button className="btn btn-info btn-lg px-5 text-color" type='submit'>
 								Login
 							</button>
 						</div>

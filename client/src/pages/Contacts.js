@@ -45,7 +45,7 @@ class Contacts extends React.Component{
     render(){
         if(!this.state.contacts.length){
             return(
-                <div>
+                <div className="text-center">
                     <SearchBar/>
                     <h1>Contacts Page</h1>
                     <h2>No Contacts Found</h2>

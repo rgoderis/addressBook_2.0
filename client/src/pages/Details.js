@@ -3,6 +3,7 @@ import Nav from '../components/Nav';
 import API from "../utils/API";
 import {userId} from "./Contacts";
 import {Redirect} from "react-router-dom"
+import "./style.css"
 
 class Details extends React.Component{
     state = {
@@ -95,33 +96,33 @@ class Details extends React.Component{
             )
         }
         return(
-            <div>
-                <h1>Contact Information</h1>
+            <div className="jumbotron container text-center background text-white">
+                <h1 className="">Contact Information</h1>
                 <br/>
-                <h2>{this.state.contact.firstName} {this.state.contact.lastName}</h2>
-                <div>
+                <h2 className="">{this.state.contact.firstName} {this.state.contact.lastName}</h2>
+                <div className="mt-2">
                     <h4>Phone Number: {this.state.contact.phoneNumber}</h4>
                     <h4>Email: {this.state.contact.email}</h4>
-                    <h4>Address: {this.state.contact.address} {this.state.contact.city} {this.state.contact.state}. {this.state.contact.zip}</h4>
+                    <h4>Address: {this.state.contact.address}, {this.state.contact.city}, {this.state.contact.state}. {this.state.contact.zip}</h4>
                     <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
                 </div>
-                <button onClick={this.deleteContact}>Delete Contact</button>
-                <button onClick={this.updateContact}>Edit Contact</button>
+                <button className="btn btn-danger mx-2 text-color" onClick={this.deleteContact}>Delete Contact</button>
+                <button className="btn btn-info mx-2 text-color"  onClick={this.updateContact}>Edit Contact</button>
                 <br/>
-                <div>
+                <div className="mt-2">
                 <h3>Notes</h3>
                     {!this.state.notes?
                     (<h4>No notes found, please enter one below</h4>):
                     (this.state.contact.notes.map(note=>(
                         <div className="mb-4">
                             <p>{note.body}</p>
-                            <button className="btn btn-danger" onClick={()=>this.deleteNote(note._id)}>Delete Note</button>
+                            <button className="btn btn-danger text-color" onClick={()=>this.deleteNote(note._id)}>Delete Note</button>
                         </div>
                     )))}
                     <br/>
                     <form>
                         <textarea className="form-control mx-auto w-50" onChange={this.handleInputChange} value={this.state.note}/>
-                        <button className="btn btn-success mt-1" onClick={this.formSubmit}>Add Note</button>
+                        <button className="btn btn-info btn-lg mt-2 text-color" onClick={this.formSubmit}>Add Note</button>
                     </form>
                 </div>
             </div>

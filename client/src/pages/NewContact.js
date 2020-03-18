@@ -5,6 +5,7 @@ import DropDown from "../components/Dropdown"
 import API from "../utils/API"
 import {username} from "../components/Login"
 import { Redirect } from 'react-router-dom';
+import "./style.css"
 
 class NewContact extends React.Component{
     state = {
@@ -133,7 +134,7 @@ class NewContact extends React.Component{
 			)
 		}
         return (
-            <div>
+            <div className="container">
                 <h1 className="text-center">{this.state.updateRoute?("Update Contact"):("New Contact")}</h1>
                 <form>
                     <div className="form-group">
@@ -172,7 +173,7 @@ class NewContact extends React.Component{
                                     name = "email"
                                 />
                             </div>
-                            <div className="col-lg-3">
+                            <div className="col-lg-2">
                                 <label>Phone Number</label>
                                 <Input
                                     placeholder = "Phone Number"
@@ -191,7 +192,7 @@ class NewContact extends React.Component{
                                     name={"birthMonth"}
                                 />
                             </div>
-                            <div className="col-lg-1">
+                            <div className="col-lg-2">
                                 <label>Birth Day</label>
                                 <DropDown
                                     array = {this.state.days}
@@ -243,8 +244,8 @@ class NewContact extends React.Component{
                         </div>
                     </div>
                     {this.state.updateRoute?
-                    (<button className="btn btn-primary btn-lg" onClick={this.handleUpdateSubmit}>Update Contact</button>):
-                    (<button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Add Contact</button>)}
+                    (<button className="btn btn-info btn-lg text-color" onClick={this.handleUpdateSubmit}>Update Contact</button>):
+                    (<button className="btn btn-info btn-lg text-color" onClick={this.handleFormSubmit}>Add Contact</button>)}
                 </form>
             </div>
         )
