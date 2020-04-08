@@ -34,6 +34,9 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
+		if(!req.session.passport.user){
+			return false
+		}
 		req.session.save((err) => {
 			if (err) {
 				return next(err);
