@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../components/Nav';
 import API from "../utils/API";
 import {userId} from "./Contacts";
 import {Redirect} from "react-router-dom"

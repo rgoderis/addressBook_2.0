@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../components/Nav'
 import Input from "../components/Input";
 import DropDown from "../components/Dropdown"
 import API from "../utils/API"

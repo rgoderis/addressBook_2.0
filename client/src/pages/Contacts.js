@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../components/Nav'
 import {username} from "../components/Login"
 import API from "../utils/API"
 import ContactCard from "../components/ContactCard"

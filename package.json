@@ -1,7 +1,7 @@
 {
-  "name": "mern_auth",
-  "version": "1.0.0",
-  "description": "Mern Demo with authentication using passport local strategy",
+  "name": "address_book",
+  "version": "2.0.0",
+  "description": "Address Book application",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -12,6 +12,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
+  "homepage": "https://immense-harbor-83008.herokuapp.com/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rgoderis/addressBook_2.0.git"
@@ -21,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/rgoderis/addressBook_2.0/issues"
   },
-  "homepage": "https://github.com/rgoderis/addressBook_2.0#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
