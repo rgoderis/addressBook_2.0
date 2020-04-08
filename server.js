@@ -54,7 +54,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 /* === Mongoose Connection === */
-mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/addressBook2',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/addressBook2');
 
 /* === Error Handling === */
 
