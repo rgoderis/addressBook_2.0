@@ -64,6 +64,7 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	addContact: function(req, res){
+		console.log(req.body)
 		Contact.create(req.body)
 		.then(function(dbContact){
 			return Account.findOneAndUpdate({username: req.params.username}, {$push: {contacts: dbContact._id}})
@@ -72,17 +73,13 @@ module.exports = {
 		.catch(err=>res.status(422).json(err))
 	},
 	getContact: function(req, res){
-		console.log("getContact")
-		console.log(req.params.id)
 		Contact.findById(req.params.id)
 		.populate("notes")
 		.then(dbModel=>{
-			// console.log(dbModel)
 			res.json(dbModel)})
 		.catch(err=>res.status(422).json(err))
 	},
 	editContact: function(req, res){
-		console.log("edit route")
 		Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
 		.then(dbModel=>{
 			res.json(dbModel)})
