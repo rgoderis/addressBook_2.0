@@ -100,10 +100,12 @@ class Details extends React.Component{
                 <br/>
                 <h2 className="">{this.state.contact.firstName} {this.state.contact.lastName}</h2>
                 <div className="mt-2">
+                <h4>Company: {this.state.contact.company}</h4>
+                    <h4>Job Title: {this.state.contact.jobTitle}</h4>
                     <h4>Phone Number: {this.state.contact.phoneNumber}</h4>
                     <h4>Email: {this.state.contact.email}</h4>
                     <h4>Address: {this.state.contact.address}, {this.state.contact.city}, {this.state.contact.state}. {this.state.contact.zip}</h4>
-                    <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4>
+                    {/* <h4>Birthday: {this.state.contact.birthMonth} {this.state.contact.birthDay}</h4> */}
                 </div>
                 <button className="btn btn-danger mx-2 text-color" onClick={this.deleteContact}>Delete Contact</button>
                 <button className="btn btn-info mx-2 text-color"  onClick={this.updateContact}>Edit Contact</button>

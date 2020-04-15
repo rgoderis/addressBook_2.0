@@ -15,12 +15,14 @@ class NewContact extends React.Component{
         lastName: "",
         email: "",
         phoneNumber: "",
-        birthMonth: "",
-        birthDay: "",
+        // birthMonth: "",
+        // birthDay: "",
         address: "",
         city: "",
         state: "",
         zip: "",
+        company: "",
+        jobTitle: "",
         redirectToReferrer: false,
         updateRoute: false,
         id: ""
@@ -45,8 +47,10 @@ class NewContact extends React.Component{
                 city: this.state.city,
                 state: this.state.state,
                 zip: this.state.zip,
-                birthDay: this.state.birthDay,
-                birthMonth: this.state.birthMonth
+                company: this.state.company,
+                jobTitle: this.state.jobTitle
+                // birthDay: this.state.birthDay,
+                // birthMonth: this.state.birthMonth
             })
             .then(res=>{
                 if(res.status=== 200){
@@ -75,8 +79,10 @@ class NewContact extends React.Component{
                 city: this.state.city,
                 state: this.state.state,
                 zip: this.state.zip,
-                birthDay: this.state.birthDay,
-                birthMonth: this.state.birthMonth
+                company: this.state.company,
+                jobTitle: this.state.jobTitle
+                // birthDay: this.state.birthDay,
+                // birthMonth: this.state.birthMonth
             })
             .then(res=>{
                 if(res.status=== 200){
@@ -106,8 +112,10 @@ class NewContact extends React.Component{
                     city: res.data.city,
                     state: res.data.state,
                     zip: res.data.zip,
-                    birthDay: res.data.birthDay,
-                    birthMonth: res.data.birthMonth
+                    company: this.state.company,
+                    jobTitle: this.state.jobTitle
+                    // birthDay: res.data.birthDay,
+                    // birthMonth: res.data.birthMonth
                 })
             })
             .catch(err=>console.log(err))
@@ -183,21 +191,21 @@ class NewContact extends React.Component{
                                 />
                             </div>
                             <div className="col-lg-2">
-                                <label>Birth Month</label>
-                                <DropDown
-                                    array = {this.state.months}
-                                    value = {this.state.birthMonth}
+                                <label>Company</label>
+                                <Input
+                                    // array = {this.state.months}
+                                    value = {this.state.company}
                                     onChange = {this.handleInputChange}
-                                    name={"birthMonth"}
+                                    name={"company"}
                                 />
                             </div>
                             <div className="col-lg-2">
-                                <label>Birth Day</label>
-                                <DropDown
-                                    array = {this.state.days}
-                                    value = {this.state.birthDay}
+                                <label>Job Title</label>
+                                <Input
+                                    // array = {this.state.days}
+                                    value = {this.state.jobTitle}
                                     onChange = {this.handleInputChange}
-                                    name={"birthDay"}
+                                    name={"jobTitle"}
                                 />
                             </div>
                         </div>
