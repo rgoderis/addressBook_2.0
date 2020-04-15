@@ -10,8 +10,6 @@ const Contact = new Schema({
     city: String,
     state: String,
     zip: String,
-    // birthMonth: String,
-    // birthDay: String,
     company: String,
     jobTitle: String,
     notes: [{

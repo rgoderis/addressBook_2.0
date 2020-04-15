@@ -15,8 +15,6 @@ class NewContact extends React.Component{
         lastName: "",
         email: "",
         phoneNumber: "",
-        // birthMonth: "",
-        // birthDay: "",
         address: "",
         city: "",
         state: "",
@@ -49,8 +47,6 @@ class NewContact extends React.Component{
                 zip: this.state.zip,
                 company: this.state.company,
                 jobTitle: this.state.jobTitle
-                // birthDay: this.state.birthDay,
-                // birthMonth: this.state.birthMonth
             })
             .then(res=>{
                 if(res.status=== 200){
@@ -81,8 +77,6 @@ class NewContact extends React.Component{
                 zip: this.state.zip,
                 company: this.state.company,
                 jobTitle: this.state.jobTitle
-                // birthDay: this.state.birthDay,
-                // birthMonth: this.state.birthMonth
             })
             .then(res=>{
                 if(res.status=== 200){
@@ -114,8 +108,6 @@ class NewContact extends React.Component{
                     zip: res.data.zip,
                     company: this.state.company,
                     jobTitle: this.state.jobTitle
-                    // birthDay: res.data.birthDay,
-                    // birthMonth: res.data.birthMonth
                 })
             })
             .catch(err=>console.log(err))
@@ -170,7 +162,7 @@ class NewContact extends React.Component{
                     </div>
                     <div className="form-group">
                         <div className="row">
-                            <div className="col-lg-6">
+                            <div className="col-lg-4">
                                 <label>Email</label>
                                 <Input
                                     placeholder = "Email"
@@ -190,19 +182,17 @@ class NewContact extends React.Component{
                                     name = "phoneNumber"
                                 />
                             </div>
-                            <div className="col-lg-2">
+                            <div className="col-lg-3">
                                 <label>Company</label>
                                 <Input
-                                    // array = {this.state.months}
                                     value = {this.state.company}
                                     onChange = {this.handleInputChange}
                                     name={"company"}
                                 />
                             </div>
-                            <div className="col-lg-2">
+                            <div className="col-lg-3">
                                 <label>Job Title</label>
                                 <Input
-                                    // array = {this.state.days}
                                     value = {this.state.jobTitle}
                                     onChange = {this.handleInputChange}
                                     name={"jobTitle"}
