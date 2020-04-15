@@ -34,9 +34,19 @@ class NewContact extends React.Component{
     }
 
     handleFormSubmit = event =>{
-        event.preventDefault()
-        if(this.state.firstName&&this.state.lastName){
-            API.saveContact(username, {
+        event.preventDefault();
+        if(!this.state.firstName && !this.state.lastName){
+            console.log("Please enter a first and last name");
+            return false
+        } else if(!this.state.phoneNumber && !this.state.email){
+            if(this.state.email.length > 0 && !this.state.email.includes("@") && !this.state.email.includes(".")){
+                console.log("Please enter a vailid email")
+                return false
+            }
+            console.log("Please enter a email or phone number")
+            return false
+        } else {
+                API.saveContact(username, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 phoneNumber: this.state.phoneNumber,
@@ -57,16 +67,23 @@ class NewContact extends React.Component{
                 }
             })
             .catch(err=>console.log(err))
-        } else {
-            console.log("Please enter a first and last name")
-            return false
         }
     }
 
     handleUpdateSubmit = event =>{
-        event.preventDefault()
-        if(this.state.firstName&&this.state.lastName){
-            API.updateContact(this.state.id, {
+        event.preventDefault();
+        if(!this.state.firstName && !this.state.lastName){
+            console.log("Please enter a first and last name");
+            return false
+        } else if(!this.state.phoneNumber && !this.state.email){
+            if(this.state.email.length > 0 && !this.state.email.includes("@") && !this.state.email.includes(".")){
+                console.log("Please enter a vailid email")
+                return false
+            }
+            console.log("Please enter a email or phone number")
+            return false
+        } else {
+                API.saveContact(username, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 phoneNumber: this.state.phoneNumber,
@@ -87,9 +104,6 @@ class NewContact extends React.Component{
                 }
             })
             .catch(err=>console.log(err))
-        } else {
-            console.log("Please enter a first and last name")
-            return false
         }
     }
 
