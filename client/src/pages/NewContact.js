@@ -1,15 +1,13 @@
 import React from 'react';
 import Input from "../components/Input";
 import DropDown from "../components/Dropdown"
-import API from "../utils/API"
+import {API} from "../utils/API"
 import {username} from "../components/Login"
 import { Redirect } from 'react-router-dom';
 import "./style.css"
 
 class NewContact extends React.Component{
     state = {
-        months: ["","January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        days:[],
         states: ["","AL","AK", "AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA", "WA","WV","WI","WY"],
         firstName: "",
         lastName: "",
