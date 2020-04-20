@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from "../components/Input";
 import DropDown from "../components/Dropdown"
-import {API} from "../utils/API"
+import API from "../utils/API"
 import {username} from "../components/Login"
 import { Redirect } from 'react-router-dom';
 import "./style.css"
