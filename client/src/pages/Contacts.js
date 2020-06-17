@@ -67,6 +67,12 @@ class Contacts extends React.Component{
                             lastName = {contact.lastName}
                             company = {contact.company}
                             title = {contact.jobTitle}
+                            phoneNumber = {contact.phoneNumber}
+                            email = {contact.email}
+                            address = {contact.address}
+                            city = {contact.city}
+                            state = {contact.state}
+                            zip = {contact.zip}
                         />
                     ))}
                 </div>

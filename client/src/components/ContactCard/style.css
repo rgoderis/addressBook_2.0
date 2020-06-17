@@ -5,3 +5,8 @@
 .text-color{
     color:  rgb(70, 70, 70);
 }
+
+.link-button{
+    text-align: center;
+    text-decoration: none;
+}

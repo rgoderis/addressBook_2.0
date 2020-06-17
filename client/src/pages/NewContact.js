@@ -118,8 +118,8 @@ class NewContact extends React.Component{
                     city: res.data.city,
                     state: res.data.state,
                     zip: res.data.zip,
-                    company: this.state.company,
-                    jobTitle: this.state.jobTitle
+                    company: res.data.company,
+                    jobTitle: res.data.jobTitle
                 })
             })
             .catch(err=>console.log(err))
@@ -129,11 +129,6 @@ class NewContact extends React.Component{
         this.props.match.params.id?this.setState({updateRoute: true}):this.setState({updateRoute: false})
         this.setState({id: this.props.match.params.id})
         this.updateContact()
-        let days=[""]
-        for(let i=1; i <=31; i++){
-            days.push(i)
-        }
-        this.setState({days: days})
     }
     
     render(){
