@@ -5,3 +5,11 @@
 .text-color{
     color:  rgb(70, 70, 70);
 }
+
+.job-container {
+    display: inline-flex;
+}
+
+.job-container-text {
+    margin-right: 5%;
+}

@@ -24,7 +24,6 @@ function ContactCard(props){
                 {props.phoneNumber?(<p className="text-white m-0">P: {props.phoneNumber}</p>):(<h3 className="d-none"></h3>)}
                 {props.email?(<p className="text-white m-0">{props.email}</p>):(<h3 className="d-none"></h3>)}
                 <br/>
-                {/* <hr className="bg-info w-25 ml-0"/> */}
                 <p className="text-white m-0">{props.address?(`${props.address}`):("")}</p>
                 <p className="text-white m-0">{props.city?(`${props.city}, `):("")}
                 {props.state?(`${props.state}. `):("")}

@@ -95,17 +95,24 @@ class Details extends React.Component{
             )
         }
         return(
-            <div className="jumbotron container text-center background text-white">
-                <h1 className="">Contact Information</h1>
+            <div className="container">
+                <h1 className="text-center ">Contact Information</h1>
                 <br/>
-                <h2 className="">{this.state.contact.firstName} {this.state.contact.lastName}</h2>
-                <div className="mt-2">
-                <h4>Company: {this.state.contact.company}</h4>
-                    <h4>Job Title: {this.state.contact.jobTitle}</h4>
+                <div className="container w-75 jumbotron background text-white">
+                    <h2 className="">{this.state.contact.firstName} {this.state.contact.lastName}</h2>
+                    <div className="job-container">
+                        {this.state.contact.company?(<h4>{this.state.contact.company}</h4>):(<h4>""</h4>)}
+                        {this.state.contact.jobTitle&&this.state.contact.company?(<h4 className="job-container-text">: </h4>):(<h4>""</h4>)}
+                        {this.state.contact.jobTitle?(<h4 className="job-container-text">{this.state.contact.jobTitle}</h4>):(<h4>""</h4>)}
+                        
+                    </div>
+                    <hr className="bg-info w-50 ml-0"/>
                     <h4>Phone Number: {this.state.contact.phoneNumber}</h4>
                     <h4>Email: {this.state.contact.email}</h4>
+                    <br/>
                     <h4>Address: {this.state.contact.address}, {this.state.contact.city}, {this.state.contact.state}. {this.state.contact.zip}</h4>
                 </div>
+
                 <button className="btn btn-danger mx-2 text-color" onClick={this.deleteContact}>Delete Contact</button>
                 <button className="btn btn-info mx-2 text-color"  onClick={this.updateContact}>Edit Contact</button>
                 <br/>
